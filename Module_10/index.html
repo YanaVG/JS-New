@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+    <title>Module 10</title>
+</head>
+<body>
+    <div class="container">
+		<div class="box">
+		<form action="post" class="form form_get">
+			<p>Отримати список користувачів</p>
+			<button class="getUsers mdc-btn" type="submit">GET USERS</button>
+        </form>
+        <form action="post" class="form form_get_user">
+            <p>Отримати користувача за id</p>
+            <input type="text" name="id" class="get_user_id" placeholder="Enter user id">
+			<button class="getUser mdc-btn" type="submit">GET USER</button>
+		</form>
+		<form action="post" class="form form_add">
+			<p>Додати користувача</p>
+			<input type="text" name="name" class="add_name" placeholder="Enter user name">
+			<input type="text" name="age" class="add_age" placeholder="Enter user age">
+			<button class="addUser mdc-btn" type="submit">ADD USER</button>
+		</form>
+		<form action="post" class="form form_remove">
+			<p>Видалити користувача</p>
+			<input type="text" name="id" class="remove_id" placeholder="Enter user id">
+			<button class="removeUser mdc-btn" type="submit">REMOVE USER</button>
+		</form>
+		<form action="post" class="form form_update">
+			<p>Обновити дані</p>
+			<input type="text" name="id" class="update_id" placeholder="Enter user id">
+			<input type="text" name="name" class="update_name" placeholder="Enter user name">
+			<input type="text" name="age" class="update_age" placeholder="Enter user age">
+			<button class="updateUser mdc-btn" type="submit">UPDATE USER</button>
+		</form>
+        </div>
+        <!-- The Result -->
+     <div class="result js-result">
+        <table class="visible centered responsive-table highlight bordered">
+            <thead>
+              <tr class="table_head">
+                <th>ID</th>
+                <th>NAME</th>
+                <th>Age</th>
+             </tr>
+            </thead>  
+            <tbody class="js-tBody"><tbody>
+          </table>
+     </div>
+     <!-- The Modal -->
+    <div id="myModal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <p class='text-content'></p>
+    </div>
+  </div>
+      <!-- The Loader -->
+  <div class="overlay-loader">
+	<div class="loader">
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+	</div>
+</div>
+	</div>
+
+    <script src="js/main.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/js/materialize.min.js"></script>
+
+</body>
+</html>
