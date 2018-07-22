@@ -1,0 +1,66 @@
+body {
+    padding: 20px;
+    font-family: Roboto, sans-serif;
+}
+  
+.form {
+    padding: 10px 20px;
+    margin-left: 7%;
+    box-shadow: 0 0 2px 2px rgba(#414141, 0.3);
+}
+
+h2 {
+    font-size: 25px;
+    font-weight: bold;
+}
+li {
+    list-style-type: none;
+    margin: 20px;
+    font-size: 20px;
+}
+
+.btn {
+    min-width: 88px;
+    height: 36px;
+    padding: 0 16px;
+    border: 0;
+    outline: 0;
+    border-radius: 2px;
+    color: #fff;
+    font-size: 14px;
+    text-transform: uppercase;
+    font-weight: 600;
+    background-color: #40b631;
+    cursor: pointer;
+    box-shadow: 0 4px 4px 0 rgba(#414141, 0.3);
+}
+
+.btn:hover {
+    background-color: #0c7a1e;
+}
+
+.btn:active {
+    box-shadow: 0 6px 4px 0 rgba(#414141, 0.3);
+}
+
+.grid {
+    width: 1170px;
+    margin: 0 auto;
+    padding: 16px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    grid-gap: 16px;
+}
+      
+.grid-item {
+    padding: 16px;
+    border-radius: 2px;
+    box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.2),
+    0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 3px 1px -2px rgba(0, 0, 0, 0.12);
+}
+      
+.grid-item > img {
+    height: 240px;
+    width: 100%;
+    object-fit: cover;
+}
