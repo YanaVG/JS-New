@@ -104,36 +104,39 @@ const template = Handlebars.compile(list);
 const filter = { 
     size: [], 
     color: [], 
-    release_date: [] 
+    release_date: []
 };
-const arrOfLaptops = [];
+let arrOfLaptops = [];
 let inputName = '';
 
 function handleInputs() {
     let inputs = form.querySelectorAll("input:checked");
-    const arr = inputs.forEach(input => {
+    console.log(inputs);
+    inputs.forEach(input => {
         inputName = input.name;
         switch(inputName){
             case "size":
-                filter.size.push(inputName);
+                filter.size.push(input.value);
                 break;
             case "color":
-            filter.color.push(inputName);
+                filter.color.push(input.value);
                 break;
             case "release_date":
-            filter.release_date.push(inputName);
+                filter.release_date.push(input.value);
                 break;
-        };
-       return input.name
+        };   
     });
 };
 
 function handleCreateArrOfUserLaptops() {
-    handleInputs();
     laptops.forEach(laptop => {
-        if(laptop.size == filter.size.toString()) arrOfLaptops.push(laptop);
-        if(laptop.color == filter.color.toString()) arrOfLaptops.push(laptop);
-        if(laptop.release_date == filter.release_date.toString()) arrOfLaptops.push(laptop);
+        if(laptop.size === filter.size.toString()) arrOfLaptops.push(laptop);
+
+        if(laptop.color === filter.color.toString()) arrOfLaptops.push(laptop);
+
+        if(laptop.release_date === filter.release_date.toString()) arrOfLaptops.push(laptop);
+
+        // if(laptop.size === filter.size.toString() & laptop.color === filter.color.toString() & laptop.release_date === filter.release_date.toString()) arrOfLaptops.push(laptop);
     });
     console.log(arrOfLaptops);
     return arrOfLaptops;
@@ -141,19 +144,20 @@ function handleCreateArrOfUserLaptops() {
 
 function handleFilter(event){
     event.preventDefault();
-    console.log(event.target)
-    // handleInputs();
+    handleInputs();
     handleCreateArrOfUserLaptops();
-    const markup = arrOfLaptops.reduce((acc, item) => acc + template(item));
+    const markup = arrOfLaptops.reduce((acc, item) => acc + template(item),'');
     grid.innerHTML = markup;
-
-
 };
-console.log(filter);
-console.log(arrOfLaptops);
 
 function handleClear(){
     form.reset();
+    grid.textContent = '';
+    filter = { 
+        size: [], 
+        color: [], 
+        release_date: []
+    };
 };
 
 btn_filter.addEventListener('click', handleFilter);
