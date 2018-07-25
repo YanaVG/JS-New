@@ -19,9 +19,12 @@ let inputValue = '';
 function handleSavaUrl() {
     inputValue = input.value;
     console.log(inputValue);
-
+    // let createObj = {
+    //     url: inputValue
+    // }
+   
     let checkUrl = arrWithUrl.includes(inputValue);
-
+    console.log(checkUrl);
     if(checkUrl === true) {
         console.log("You have already saved this url");
     } else {
@@ -36,13 +39,21 @@ function handleSubmit(e) {
     e.preventDefault();
 
     handleSavaUrl();
-    // template(item)console.log(item)
-    const markup = arrWithUrl.forEach(item => template(item));
-    // const markup = arrWithUrl.reduce((acc, item) => acc + template(item),'');
-    grid.innerHTML += markup;
-}
+    // const markup = arrWithUrl.forEach(item => template(item));
+    const markup = template(arrWithUrl);
+    // const markup = arrWithUrl.map(item => template(item));
+    // grid.innerHTML += markup;
+    grid.insertAdjacentHTML('afterbegin', markup);
+    console.log(markup);
+};
+
+function handleDelete(e) {
+    e.preventDefault();
+    const target = e.target;
+    console.log(target);
+};
 
 
 
 btnSubmit.addEventListener('click', handleSubmit);
-// btnDelete.addEventListener('submit', handleDelete);
+// btnDelete.addEventListener('click', handleDelete);
