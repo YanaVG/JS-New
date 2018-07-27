@@ -32,7 +32,6 @@ constructor ({
     this.startTime = 0,
     this.deltaTime = null,
     this.timerId = null,
-    // this.pauseTime = null,
     this.isActive = false,
     this.laps =[]
     this.onTick = onTick,
@@ -41,13 +40,11 @@ constructor ({
 }
     start() {
         if(!this.isActive) {
-            // console.log('start');
             this.isActive = true;
             this.startTime = new Date();
             this.startTime = new Date() - this.deltaTime;
 
             this.timerId = setInterval(() => {
-                // let currantTime = new Date();
                 this.deltaTime = new Date() - this.startTime;
                 let time = new Date(this.deltaTime);
                 this.onTick( time )
@@ -68,7 +65,6 @@ constructor ({
         this.onTick(this.startTime);
         startBtn.textContent = 'Start';
         this.laps = [];
-
     }
     lap() {
         const lapTime = this.onPush(this.deltaTime);
