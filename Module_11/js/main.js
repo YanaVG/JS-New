@@ -101,56 +101,39 @@ const grid = document.querySelector(".grid");
 const list = document.querySelector("#list").innerHTML.trim();
 const template = Handlebars.compile(list);
 
-const filter = { 
-    size: [], 
-    color: [], 
-    release_date: []
-};
 
 let arrOfLaptops = [];
-let inputName = '';
+let filter = {};
 
 function handleInputs() {
     let inputs = Array.from(form.querySelectorAll("input:checked"));
-    console.log(inputs);
-    inputs.forEach(input => {
-        inputName = input.name;
-        switch(inputName){
-            case "size":
-                filter.size.push(input.value);
-                break;
-            case "color":
-                filter.color.push(input.value);
-                break;
-            case "release_date":
-                filter.release_date.push(input.value);
-                break;
-        };  
-    });
+
+    filter = inputs.reduce((acc, input) => {
+        acc[input.name].push(input.value);
+        return acc;
+    },
+    {size: [], color: [], release_date: []},
+    );
     console.log(filter);
 };
 
 function handleCreateArrOfUserLaptops() {
     laptops.find(laptop => {
-
         if(laptop.size == filter.size.toString() && laptop.color == filter.color.toString() && laptop.release_date == filter.release_date.toString()) arrOfLaptops.push(laptop);
     });
-    console.log(arrOfLaptops);
     return arrOfLaptops;
 };
 
 function handleFilter(event){
     event.preventDefault();
+
     handleInputs();
     handleCreateArrOfUserLaptops();
+
     const markup = arrOfLaptops.reduce((acc, item) => acc + template(item),'');
+    
     grid.innerHTML = markup;
     arrOfLaptops = [];
-    filter.size = [];
-    filter.color = [];
-    filter.release_date = [];
-
-
 };
 
 function handleClear(){
