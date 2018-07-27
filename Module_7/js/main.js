@@ -22,18 +22,18 @@ const posts = [
   const root = document.querySelector('#root');
   
   const elements = createCardItem(posts);
-  root.append(...elements);
-  console.log(posts);
+  root.append(elements);
+  console.log(createCardItem);
   
-//   function createCardItem(arr) {
-//     const elements = [];
+  // function createCardItem(arr) {
+  //   const elements = [];
     
-//     arr.forEach(item => {
-//       const el = createPostCard(item);
-//       elements.push(el);
-//     });
-//     return elements;
-//   };
+  //   arr.forEach(item => {
+  //     const el = createPostCard(item);
+  //     elements.push(el);
+  //   });
+  //   return elements;
+  // };
   
   //or
 
