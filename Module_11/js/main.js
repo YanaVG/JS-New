@@ -118,6 +118,8 @@ function handleInputs() {
 };
 
 function handleCreateArrOfUserLaptops() {
+    arrOfLaptops = [];
+
     laptops.find(laptop => {
         if(laptop.size == filter.size.toString() && laptop.color == filter.color.toString() && laptop.release_date == filter.release_date.toString()) arrOfLaptops.push(laptop);
     });
@@ -131,14 +133,14 @@ function handleFilter(event){
     handleCreateArrOfUserLaptops();
 
     const markup = arrOfLaptops.reduce((acc, item) => acc + template(item),'');
-    
+
     grid.innerHTML = markup;
-    arrOfLaptops = [];
 };
 
 function handleClear(){
     form.reset();
     grid.innerHTML = '';
+
 };
 
 btn_filter.addEventListener('click', handleFilter);
