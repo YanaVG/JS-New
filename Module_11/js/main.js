@@ -106,11 +106,12 @@ const filter = {
     color: [], 
     release_date: []
 };
+
 let arrOfLaptops = [];
 let inputName = '';
 
 function handleInputs() {
-    let inputs = form.querySelectorAll("input:checked");
+    let inputs = Array.from(form.querySelectorAll("input:checked"));
     console.log(inputs);
     inputs.forEach(input => {
         inputName = input.name;
@@ -124,19 +125,15 @@ function handleInputs() {
             case "release_date":
                 filter.release_date.push(input.value);
                 break;
-        };   
+        };  
     });
+    console.log(filter);
 };
 
 function handleCreateArrOfUserLaptops() {
-    laptops.forEach(laptop => {
-        if(laptop.size === filter.size.toString()) arrOfLaptops.push(laptop);
+    laptops.find(laptop => {
 
-        if(laptop.color === filter.color.toString()) arrOfLaptops.push(laptop);
-
-        if(laptop.release_date === filter.release_date.toString()) arrOfLaptops.push(laptop);
-
-        // if(laptop.size === filter.size.toString() & laptop.color === filter.color.toString() & laptop.release_date === filter.release_date.toString()) arrOfLaptops.push(laptop);
+        if(laptop.size == filter.size.toString() && laptop.color == filter.color.toString() && laptop.release_date == filter.release_date.toString()) arrOfLaptops.push(laptop);
     });
     console.log(arrOfLaptops);
     return arrOfLaptops;
@@ -148,16 +145,17 @@ function handleFilter(event){
     handleCreateArrOfUserLaptops();
     const markup = arrOfLaptops.reduce((acc, item) => acc + template(item),'');
     grid.innerHTML = markup;
+    arrOfLaptops = [];
+    filter.size = [];
+    filter.color = [];
+    filter.release_date = [];
+
+
 };
 
 function handleClear(){
     form.reset();
-    grid.textContent = '';
-    filter = { 
-        size: [], 
-        color: [], 
-        release_date: []
-    };
+    grid.innerHTML = '';
 };
 
 btn_filter.addEventListener('click', handleFilter);
