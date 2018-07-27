@@ -1,193 +1,49 @@
 JS-5
-
 /*
-  Используя массив (users) объектов пользователей, напишите функции которые с помощью 
-  функциональных методов массивов (никаких for, splice и т.д.) выполняют указанные операции.
-*/
+Создайте менеджер управления данными аккаунтов пользователей соцсети SocialBook.
 
-/**
- * Получить массив имен (поле name) всех пользователей
- */
-const getAllNames = arr => {...};
+ОБЯЗАТЕЛЬНО ПРИ ВЫПОЛНЕНИИ: - написать функцию-конструктор создающую объект со свойствами и методами - при работе с коллекциями данных использовать функциональные методы массивов, никаких for и т. п.
 
-console.log(getAllNames(users)); 
-// [ 'Moore Hensley', 'Sharlene Bush', 'Ross Vazquez', 'Elma Head', 'Carey Barr', 'Blackburn Dotson', 'Sheree Anthony' ]
+Для создания объекта используйте функцию-конструктор, принимающую следующие параметры:
 
-                            
-/**
- * Получить массив объектов пользователей по цвету глаз (поле eyeColor)
- */
-const getUsersByEyeColor = (arr, color) => {...};
+-users - массив пользователей. Каждый пользователь это объект с полями: id - уникальный идентификатор login - почта password - пароль isActive - статус активности
 
-console.log(getUsersByEyeColor(users, 'blue')); // [объект Moore Hensley, объект Sharlene Bush, объект Carey Barr]
+-posts - объект с ключами равными id пользователя соцсети SocialBook. Значениями свойств являются массивы постов пользователя. Каждый пост состоит из: id - уникальный идентификатор text - текст поста likes - количество лайков поста */
 
-                                            
-/**
- * Получить массив имен пользователей по полу (поле gender)
- */
-const getUsersByGender = (arr, gender) => {...};
+function SocialBook (users = [], posts = {}) { ... }
 
-console.log(getUsersByGender(users, 'male')); // [ 'Moore Hensley', 'Ross Vazquez', 'Carey Barr', 'Blackburn Dotson' ]
+/_ Используйте следующий массив пользователей при создании экземпляра SocialBook _/ const initialUsers = [ { id: "-s19a6hqce", login: "mangozedog@mail.com", password: "qwe123zv", isActive: true }, { id: "-qkpzenjxe", login: "polysweet@skynet.ze", password: "123zxc78", isActive: true }, { id: "-e51cpd4di", login: "ajax2k@change.ua", password: "ert234qw", isActive: false } ];
 
+/_ Используйте следующий объект постов пользователей при создании экземпляра SocialBook _/ const initialPosts = { "-s19a6hqce": [ { id: "-5sgljaskg", text: "post #1", likes: 3 }, { id: "-199hb6igr", text: "post #2", likes: 5 }, { id: "-hy0eyw5qo", text: "post #3", likes: 13 } ], "-qkpzenjxe": [ { id: "-5tu69g5rf", text: "post #1", likes: 8 }, { id: "-bje766393", text: "post #2", likes: 15 } ], "-e51cpd4di": [ { id: "-9y6nkmlj4", text: "post #1", likes: 18 }, { id: "-i03pbhy3s", text: "post #2", likes: 45 } ], };
 
-/**
- * Получить массив только неактивных пользователей (поле isActive)
- */
-const getInactiveUsers = arr => {...};
+/* Для создания уникального идентификатора для поля id, используйте вспомогательную функцию getId(), возвращающую уникальную строку.
 
-console.log(getInactiveUsers(users)); // [объект Moore Hensley, объект Ross Vazquez, объект Blackburn Dotson]
-                      
-                                 
-/**
- * Получить пользоваля (не массив) по email (поле email, он уникальный)
- */
-const getUserByEmail = (arr, email) => {...};
+К примеру: const user = { id: getId(), name: 'Mango' }; */ const getId = () => "-" + Math.random().toString(36).substr(2, 9);
 
-console.log(getUserByEmail(users, 'shereeanthony@kog.com')); // {объект пользователя Sheree Anthony}
-console.log(getUserByEmail(users, 'elmahead@omatom.com')); // {объект пользователя Elma Head}
+/_ Добавьте в SocialBook следующие методы для работы с пользователями: ** getAllUsers() - возвращает массив всех пользователей
 
+** getUserByLogin(login) - ищет и возвращает объект пользователя с совпадающим логином
 
-/**
- * Получить массив пользователей попадающих в возрастную категорию от min до max лет (поле age)
- */
-const getUsersWithAge = (arr, min, max) => {...};
+** getUserStatus(userId) - ищет пользователя по id и возвращает 'active' если isActive true, в противном случае возвращает 'inactive'.
 
-console.log(getUsersWithAge(users, 20, 30)); // [объект Ross Vazquez, объект Elma Head, объект Carey Barr]
-                                            
-console.log(getUsersWithAge(users, 30, 40)); 
-// [объект Moore Hensley, объект Sharlene Bush, объект Blackburn Dotson, объект Sheree Anthony]
-                                 
-                                 
-/**
- * Получить общую сумму баланса (поле balance) всех пользователей
- */
-const getTotalBalance = arr => {...};
+** addUser(user) - принимает объект user с полями email и password и добавляет ему поля id(используя функцию getId) и isActive (false). Затем добавляет пользователя в свойство users самого экземпляра.
 
-console.log(getTotalBalance(users)); // 20916
-                                
-                                
-/**
- * Массив имен всех пользователей у которых есть друг с указанным именем
- */
-const getUsersByFriend = (arr, name) => {...};
+** removeUserById(userId) - удаляет пользователя из массива пользователей по полю id
 
-console.log(getUsersByFriend(users, 'Briana Decker')); // [ 'Sharlene Bush', 'Sheree Anthony' ]
-console.log(getUsersByFriend(users, 'Goldie Gentry')); // [ 'Elma Head', 'Sheree Anthony' ]
-                                            
-const users = [
-  {
-    id: '701b29c3-b35d-4cf1-a5f6-8b12b29a5081',
-    name: 'Moore Hensley',
-    email: 'moorehensley@indexia.com',
-    eyeColor: 'blue',
-    phone: '+1 (848) 556-2344',
-    friends: ['Sharron Pace'],
-    isActive: false,
-    balance: 2811,
-    skills: ['ipsum', 'lorem'],
-    gender: 'male',
-    age: 37,
-  },
-  {
-    id: '7a3cbd18-57a1-4534-8e12-1caad921bda1',
-    name: 'Sharlene Bush',
-    email: 'sharlenebush@tubesys.com',
-    eyeColor: 'blue',
-    phone: '+1 (855) 582-2464',
-    friends: ['Briana Decker', 'Sharron Pace'],
-    isActive: true,
-    balance: 3821,
-    skills: ['tempor', 'mollit', 'commodo', 'veniam', 'laborum'],
-    gender: 'female',
-    age: 34,
-  },
-  {
-    id: '88beb2f3-e4c2-49f3-a0a0-ecf957a95af3',
-    name: 'Ross Vazquez',
-    email: 'rossvazquez@xinware.com',
-    eyeColor: 'green',
-    phone: '+1 (814) 593-3825',
-    friends: ['Marilyn Mcintosh', 'Padilla Garrison', 'Naomi Buckner'],
-    isActive: false,
-    balance: 3793,
-    skills: ['nulla', 'anim', 'proident', 'ipsum', 'elit'],
-    gender: 'male',
-    age: 24,
-  },
-  {
-    id: '249b6175-5c30-44c6-b154-f120923736f5',
-    name: 'Elma Head',
-    email: 'elmahead@omatom.com',
-    eyeColor: 'green',
-    phone: '+1 (909) 547-2687',
-    friends: ['Goldie Gentry', 'Aisha Tran'],
-    isActive: true,
-    balance: 2278,
-    skills: ['adipisicing', 'irure', 'velit'],
-    gender: 'female',
-    age: 21,
-  },
-  {
-    id: '334f8cb3-eb04-45e6-abf4-4935dd439b70',
-    name: 'Carey Barr',
-    email: 'careybarr@nurali.com',
-    eyeColor: 'blue',
-    phone: '+1 (956) 512-2693',
-    friends: ['Jordan Sampson', 'Eddie Strong'],
-    isActive: true,
-    balance: 3951,
-    skills: ['ex', 'culpa', 'nostrud'],
-    gender: 'male',
-    age: 27,
-  },
-  {
-    guid: '150b00fb-dd82-427d-9faf-2879ea87c695',
-    name: 'Blackburn Dotson',
-    email: 'blackburndotson@furnigeer.com',
-    eyeColor: 'brown',
-    phone: '+1 (876) 411-2433',
-    friends: ['Jacklyn Lucas', 'Linda Chapman'],
-    isActive: false,
-    balance: 1498,
-    skills: ['non', 'amet', 'ipsum'],
-    gender: 'male',
-    age: 38,
-  },
-  {
-    id: 'e1bf46ab-7168-491e-925e-f01e21394812',
-    name: 'Sheree Anthony',
-    email: 'shereeanthony@kog.com',
-    eyeColor: 'brown',
-    phone: '+1 (979) 504-2554',
-    friends: ['Goldie Gentry', 'Briana Decker'],
-    isActive: true,
-    balance: 2764,
-    skills: ['lorem', 'veniam', 'culpa'],
-    gender: 'female',
-    age: 39,
-  },
-];
+** getUsersCount() - возвращает общее количество пользователей _/
 
+/* ДОПОЛНИТЕЛЬНОЕ ЗАДАНИЕ - выполнять по желанию
 
-/*
-  ⚠️ ЗАДАНИЕ ПОВЫШЕННОЙ СЛОЖНОСТИ - ВЫПОЛНЯТЬ ПО ЖЕЛАНИЮ
-*/
-                                         
-/**
-* Получить массив всех скиллов всех пользователей (поле skills), при этом не должно быть
-* повторяющихся скиллов и они должны быть отсортированы в алфавитном порядке
-*/
-const getAllSkills = arr => {...};
+Добавьте в SocialBook следующие методы для работы с постами пользователей:
 
-console.log(getAllSkills(users));
-// [ 'adipisicing', 'amet', 'anim', 'commodo', 'culpa', 'elit', 'ex', 'ipsum', 'irure', 'laborum', 'lorem', 'mollit', 'non', 'nostrud', 'nulla', 'proident', 'tempor', 'velit', 'veniam' ]
+** getUserPosts(userId) - возвращает массив постов пользователя с id равным userId
 
-                             
-/**
-* Массив имен (поле name) людей, отсортированных в зависимости от количества их друзей (поле friends)
-*/
-const getUserNamesSortedByFriendsCount = arr => {...};
+** addPost(userId, post) - добавляет post в поле posts объекта socialBook по ключу userId.
 
-console.log(getUserNamesSortedByFriendsCount(users)); 
-// [ 'Moore Hensley', 'Sharlene Bush', 'Elma Head', 'Carey Barr', 'Blackburn Dotson', 'Sheree Anthony', 'Ross Vazquez' ]
-view raw
+** removePost(userId, postId) - удаляет post с id равным postId из поля posts объекта socialBook по ключу userId
+
+** getAllLikes(userId) - возвращает сумму всех полей likes постов пользователя с id равным userId
+
+** addPostLike(userId, postId) - увеличивает значение поля likes на 1 у поста с id равным postId, для пользователя с id равным userId
+
+** getPostsCount(userId) - возвращает общее количество постов пользователя с id равным userId */
