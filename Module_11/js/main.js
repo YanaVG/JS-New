@@ -126,13 +126,13 @@ form.addEventListener('submit', event => {
 
     const filterLaptops = filter => laptops.filter(laptop => {
         if (
-            (filter.size.includes(laptop.size.toString()) && filter.color.includes(laptop.color) && filter.release_date.includes(laptop.release_date.toString())) ||
+            (filter.size.includes(laptop.size.toString()) && filter.color.includes(laptop.color) && filter.release_date.includes(laptop.release_date.toString()))
             // (filter.size.includes(laptop.size.toString()) && filter.color.includes(laptop.color)) ||
             // (filter.size.includes(laptop.size.toString()) && filter.release_date.includes(laptop.release_date.toString())) ||
             // (filter.color.includes(laptop.color) && filter.release_date.includes(laptop.release_date.toString()))
-            filter.size.includes(laptop.size.toString()) ||
-            filter.color.includes(laptop.color) ||
-            filter.release_date.includes(laptop.release_date.toString())
+            // filter.size.includes(laptop.size.toString()) ||
+            // filter.color.includes(laptop.color) ||
+            // filter.release_date.includes(laptop.release_date.toString())
         ) {
             return laptop;
         }
