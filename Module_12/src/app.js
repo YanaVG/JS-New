@@ -18,9 +18,9 @@ let arrWithUrl = [];
 let inputValue = null;
 const persistedUrls = getLocalStorage();
 
-// if(persistedUrls) {
-//     hydratePhotosGrid(persistedUrls);
-// }
+if(persistedUrls) {
+    hydratePhotosGrid(persistedUrls);
+}
 
 form.addEventListener('submit', handleSubmit);
 
@@ -58,11 +58,9 @@ function updateGrid() {
 };
 
 //============== Save URL ====================
-
 function handleSaveUrl() {
     inputValue = input.value;
     let checkUrl = arrWithUrl.includes(inputValue);
-    console.log('checkurl ', checkUrl);
      if(checkUrl) {
         showModal();
         modalContent.textContent = "You have already saved this url"; 
@@ -79,21 +77,27 @@ function handleSubmit(e) {
     handleSaveUrl();
 
 };
+//============== DELETE ITEM  ====================
+function handleDelete(e) {
+    e.preventDefault();
+    const target = e.target;
 
-function handleDelete({target}) {
     const nodeName = target.nodeName;
     if( nodeName !== 'BUTTON') return;
+
     const parent = target.parentNode;
     const elem = parent.querySelector('.item_url');
-    // const arrOfUrls = getLocalStorage();
 
-    const updateListOfUrls = arrWithUrl.filter(item => item !== elem.textContent);
+    const arrOfUrls = getLocalStorage();
+    console.log(arrOfUrls);
+
+    const updateListOfUrls = arrOfUrls.filter(item => item !== elem.textContent);
     arrWithUrl = updateListOfUrls; 
     console.log('updateListOfUrls', updateListOfUrls);
     console.log('arrWithUrl', arrWithUrl);
     updateGrid();
     hydratePhotosGrid(arrWithUrl);
-    removeFromLocalStorage();
+    // removeFromLocalStorage();
     setLocalStorage(arrWithUrl);
     parent.innerHTML= '';
 
