@@ -7,3 +7,7 @@ export const getLocalStorage = () => {
 
     return data ? data.toString(data) : null;
 };
+
+export const removeFromLocalStorage = () => {
+    localStorage.removeItem('saved-url');
+};
