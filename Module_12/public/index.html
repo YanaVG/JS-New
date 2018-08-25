@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Home Task #12</title>
+</head>
+<body>
+    <div class="title">
+        <div class="red_box">
+            <p>S</p>
+        </div>
+        <h1>Save URL your favorite websites</h1>
+    </div>
+
+    <form class="form">
+        <input type="url" class="input" placeholder="Write url ...">
+        <button type="submit" class="btn btn_submit">Add</button>
+    </form>
+
+    <div class="modal modal--hidden">
+        <div class="modal__backdrop js-modal-backdrop">
+            <div class="modal__window">
+                <div class="modal--content js-modal--content"></div>
+                <button class="modal__close js-close-modal">X</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="grid"></div>
+
+    <!-- <template id="list">
+                <div class="grid-item">
+                    <h2 class="item_url">Url website:</h2>
+                        {{#each this}}
+                            <p>{{{this}}}</p>
+                        {{/each}}
+                        <button class="btn btn_delete">Delete</button>
+                </div>
+            </template> -->
+
+</body>
+</html>
