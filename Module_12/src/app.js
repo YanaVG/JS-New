@@ -8,5 +8,3 @@ const view = new View();
 const model = new Model();
 
 new Controller(model, view);
-
-view.addNotes();

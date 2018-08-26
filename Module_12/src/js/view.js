@@ -1,5 +1,4 @@
 import EventEmitter from '../services/event-emitter';
-import { getLocalStorage } from '../services/storage';
 
 export default class View extends EventEmitter {
     constructor() {
@@ -48,10 +47,6 @@ export default class View extends EventEmitter {
         this.notesGrid.appendChild(item);
 
         this.form.reset(); 
-    }
-
-    addNotes() {
-        getLocalStorage().forEach(item => this.addNode(item))
     }
 
     appendEventListener(item) {
