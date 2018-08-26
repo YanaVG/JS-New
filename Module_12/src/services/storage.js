@@ -7,7 +7,3 @@ export const getLocalStorage = () => {
 
     return data ? JSON.parse(data) : null;
 };
-
-export const removeFromLocalStorage = () => {
-    localStorage.removeItem('saved-url');
-};
