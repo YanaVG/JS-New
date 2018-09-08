@@ -5,7 +5,7 @@ let arrOfUrl = [];
 
 export default class Model {
     constructor(items = []){
-        this.items = items;
+       
     }
 
     validateItem(inputText) {
