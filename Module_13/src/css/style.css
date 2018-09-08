@@ -1,0 +1,197 @@
+body {
+    padding: 20px;
+    font-family: Roboto, sans-serif;
+}
+  
+.form {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 400px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 8px;
+    border-radius: 2px;
+    box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.2),
+      0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 3px 1px -2px rgba(0, 0, 0, 0.12);
+}
+
+.input {
+    flex-grow: 1;
+    padding: 8px;
+    font-size: 16px;
+    font-family: inherit;
+    resize: none;
+    border-radius: 2px;
+  }
+
+.title {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      margin: 30px  0 30px 0;
+  }
+
+.title h1 {
+    font-size: 40px;
+    font-weight: bold;
+    margin-top: 17px;
+}
+
+.red_box {
+    height: 50px;
+    width: 50px;
+    color: #fff;
+    background-color: red;
+    margin-right: 2%;
+    margin-top: 7px;
+}
+
+.red_box--title {
+    font-family: Trattatello;
+    font-size: 50px;
+    text-align: center;
+    color: #fff;
+}
+
+.btn {
+    position: relative;
+    border: none;
+    border-radius: 3px;
+    margin: 0 4px;
+    padding: 0 16px;
+    vertical-align: top;
+    outline: none;
+  
+    font-size: 15px;
+    line-height: 2.8;
+    color: #fff;
+    text-transform: uppercase;
+    text-align: center;
+    white-space: nowrap;
+  
+    background-color: red;
+    overflow: hidden;
+    z-index: 0;
+    cursor: pointer;
+  
+    box-shadow: 0 2px 1px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.3);
+    transition: background-color 0.3s, box-shadow 0.3s, opacity 0.3s, color 0.3s;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  
+    width: 70px;
+    min-height: 36px;
+    font-weight: 500;
+    font-family: inherit;
+  
+    transition: box-shadow 0.28s cubic-bezier(0.4, 0, 0.2, 1),
+      background-color 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: pointer;
+  }
+  
+.button:active {
+    box-shadow: 0 2px 3px rgba(0, 0, 0, 0.1), 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.grid {
+    width: 900px;
+    margin: 0 auto;
+    padding: 16px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+    grid-gap: 16px;
+}
+      
+.grid-item {
+    display: flex;
+    flex-direction: column;
+    padding: 16px;
+    border-radius: 2px;
+    padding: 10px;
+    overflow-x:hidden; 
+    box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.2),
+    0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 3px 1px -2px rgba(0, 0, 0, 0.12);
+}
+
+.grid-item a {
+    font-size: 25px;
+    margin-top: 2% 0 3% 5%;
+}
+
+.grid-item h2 {
+    text-align: center;
+    margin-bottom: 5%;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.btn_delete {
+    margin: 5% 0 2% 45%;
+    padding: 0 10px;
+    font-size: 10px;
+}
+
+.modal {
+    max-height: 50%;
+    max-width: 50%;
+}
+
+.modal--hidden {
+   display: none;
+}
+
+.modal__backdrop {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   position: fixed;
+   top: 0;
+   left: 0;
+   right: 0;
+   bottom: 0;
+   background-color: rgba(0, 0, 0, 0.2);
+   z-index: 999;
+}
+
+.modal__window {
+   position: relative;
+   display: flex;
+   min-width: 500px;
+   min-height: 300px;
+   background-color: #fff;
+   box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.2),
+    0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 3px 1px -2px rgba(0, 0, 0, 0.12);
+}
+
+.modal__close {
+   position: absolute;
+   top: 20px;
+   right: 20px;
+   width: 32px;
+   height: 32px;
+   cursor: pointer;
+   background-image: url('https://image.flaticon.com/icons/svg/32/32178.svg');
+   background-size: 50%;
+   background-repeat: no-repeat;
+   background-position: center;
+   background-color: #fff;
+   border-radius: 50%;
+   border: none;
+   padding: 8px;
+   margin: 0;
+   outline: 0;
+   box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.2),
+    0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 3px 1px -2px rgba(0, 0, 0, 0.12);
+}
+
+.modal__close:hover {
+   background-color: #fc3030;
+}
+
+.modal--content {
+    margin-top: 25%;
+    margin-left: 5%;
+    font-size: 30px;
+    font-weight: bold;
+    color: red; 
+}
